@@ -1,2 +1,17 @@
-module PicoIidx:
-    signal gnd
+import RP2040Kit from "rp2040/RP2040.ato"
+import LEDIndicatorRed from "generics/leds.ato"
+import LDOReg3V3 from "regulators/regulators.ato"
+import USBCConn from "usb-connectors/usb-connectors.ato"
+
+module Blinky:
+    micro_controller = new RP2040Kit
+    led_indicator = new LEDIndicatorRed
+    voltage_regulator = new LDOReg3V3
+    usb_c_connector = new USBCConn
+
+    usb_c_connector.power ~ voltage_regulator.power_in
+    voltage_regulator.power_out ~ micro_controller.power
+    micro_controller.gpio13 ~ led_indicator.input
+    micro_controller.power.gnd ~ led_indicator.gnd
+
+    led_indicator.v_in = 3.3volt +/-10%

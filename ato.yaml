@@ -3,4 +3,15 @@ builds:
   default:
     entry: elec/src/pico-iidx.ato:PicoIidx
 dependencies:
-- generics
+- name: generics
+  version_spec: '@09ad6baeaab93d53b9b6c90069ac750f4161d76f'
+  link_broken: true
+  path: elec/src/generics
+- name: rp2040
+  version_spec: '@a8c4e5cf7b1a72942f23138e11141b73be84eceb'
+  link_broken: true
+  path: elec/src/rp2040
+- name: usb-connectors
+  version_spec: '@53496dede5b600bd799a0afe199eaa514ebdc5f6'
+  link_broken: true
+  path: elec/src/usb-connectors
